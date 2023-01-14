@@ -22,6 +22,8 @@ body {
     &::-webkit-scrollbar-track {
         background: #c7c7c7;
     }
+
+    overflow: hidden;
 }
 
 
@@ -304,6 +306,31 @@ body {
                     margin-bottom: 0;
                 }
             }
+        }
+    }
+
+
+    @media screen and (max-width:500px) {
+        & {
+            position: relative;
+            padding-bottom: 3rem;
+
+            .product-add {
+                position: absolute;
+                top: 70%;
+                left: 0%;
+                transform: translate(-0%, 50%);
+                margin-bottom: 1rem;
+                gap: 1rem;
+                display: flex;
+                flex-direction: row;
+
+                .quantity {
+                    margin-bottom: 0;
+                }
+            }
+
+
         }
     }
 
