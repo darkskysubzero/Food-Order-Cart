@@ -1,7 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useState } from "react";
 import Wrapper from "./Wrapper";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBowlFood, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
+import Store from "../Store";
 
 const Item = (props) => {
 
@@ -61,8 +62,8 @@ const Item = (props) => {
         ))
     }
 
-    //=======================================================================
 
+    const context = useContext(Store);
 
 
 
@@ -70,8 +71,21 @@ const Item = (props) => {
 
     //======================ADDING ITEM=====================================
     const addItem = () => {
-        console.log(item);
+
+        // Adding item to global cart
+        const { cart, setCart } = context;
+        setCart(prev => {
+            return [...prev, item]
+        })
+
+        // Resetting quantity
+        setItem(prev => ({
+            ...prev,
+            itemQuantity: 1
+        }))
     }
+
+
 
 
     return (
