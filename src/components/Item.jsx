@@ -5,25 +5,42 @@ import { faBowlFood, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const Item = (props) => {
 
+    /*
 
-    const [item, setItem] = useState({
-        itemQuantity: 1
-    });
+            itemID: crypto.randomUUID(),
+            itemImage: "https://www.licious.in/blog/wp-content/uploads/2020/12/Chicken-Curry-recipe.jpg",
+            itemName: "Chicken Curry",
+            itemSize: "4 People",
+            itemPrice: 120,
+            itemQuantity: 1
+
+    */
+
+    const { food } = props;
+
+    const [item, setItem] = useState(food);
 
 
     //=======================MANAGE QUANTITY=================================
     const setQuantity = (e) => {
-        setItem({
-            ...item,
-            itemQuantity: e.target.value
-        })
+        setItem(prev => ({
+            ...prev,
+            itemQuantity: Number(e.target.value)
+        }))
     }
 
     const increaseQuantity = () => {
-        setItem({
-            ...item,
-            itemQuantity: item.itemQuantity + 1
-        })
+
+
+        setItem(prev => (
+            {
+                ...prev,
+                itemQuantity: prev.itemQuantity + 1
+
+            }
+
+        ))
+
     }
 
     const decreaseQuantity = () => {
@@ -33,10 +50,15 @@ const Item = (props) => {
         } else {
             newQuantity--;
         }
-        setItem({
-            ...item,
-            itemQuantity: newQuantity
-        })
+
+        setItem(prev => (
+            {
+                ...prev,
+                itemQuantity: newQuantity
+
+            }
+
+        ))
     }
 
     //=======================================================================
@@ -52,15 +74,14 @@ const Item = (props) => {
     }
 
 
-
     return (
         <Wrapper>
             <div className="item">
                 <div className="product-info">
-                    <div className="product-image"><img src="https://via.placeholder.com/150" /></div>
-                    <div className="product-details"><span>Analog Magazing Rack</span><span>Red</span></div>
+                    <div className="product-image"><img src={item.itemImage} /></div>
+                    <div className="product-details"><span>{item.itemName}</span><span>{item.itemSize}</span></div>
                 </div>
-                <div className="product-price">$120</div>
+                <div className="product-price">R {item.itemPrice}</div>
                 <div className="product-add">
 
                     <div className="quantity">
