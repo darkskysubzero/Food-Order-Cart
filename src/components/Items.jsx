@@ -14,6 +14,15 @@ const Items = (props) => {
             itemPrice: 120,
             itemQuantity: 1
         },
+
+        {
+            itemID: crypto.randomUUID(),
+            itemImage: "https://www.licious.in/blog/wp-content/uploads/2022/06/chicken-hyderabadi-biryani-01.jpg",
+            itemName: "Chicken Biryani",
+            itemSize: "2 People",
+            itemPrice: 100,
+            itemQuantity: 1
+        },
     ]
 
 

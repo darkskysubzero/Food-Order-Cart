@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Wrapper from "./Wrapper";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faC, faX } from "@fortawesome/free-solid-svg-icons";
+import Store from "../Store";
 
 const Header = (props) => {
 
+    const context = useContext(Store);
 
+    const [itemCount, setItemCount] = useState(1);
+
+    const getCartCount = () => {
+        const count = context.cart.reduce((total, next) => total + next.itemQuantity, 0);
+        setItemCount(count);
+    }
+
+
+    useEffect(() => {
+        getCartCount();
+    }, [context.cart]);
 
     return (
         <Wrapper>
@@ -19,7 +32,7 @@ const Header = (props) => {
                     <li>Search</li>
                     <li className="cartBtn">
                         <button>Cart</button>
-                        <span>3</span>
+                        <span>{itemCount}</span>
                     </li>
                     <li className="hamburger">
                         <FontAwesomeIcon icon={faBars} />
