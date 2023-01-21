@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Item from "./Item";
 import Wrapper from "./Wrapper";
 
@@ -15,6 +15,7 @@ const Items = (props) => {
             itemQuantity: 1
         },
     ]
+
 
     return (
         <Wrapper>
